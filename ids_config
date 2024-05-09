@@ -1,0 +1,80 @@
+# Parameters
+Window Size: 1
+Sliding Window: True
+Episode Maximum Length: 100
+Episode Minimum Frequency: 0.01
+Episode Minimum Confidence: 0
+Fixed Length Episode: False
+Batch Granularity: 0.1
+Batch Width: 30
+Classes: B, A, I, R
+Home Directory: output
+Round Value: 1
+IP Address: 127.0.0.1
+Port: 20000
+Output Prefix: sequence
+Analysis Result Prefix: result
+Number Of Candidates: 10
+Number Of Results: 10
+Number Of Final Results: 3
+Local: True
+IP Address 0: 10.0.0.69
+Port 0: 20001
+IP Address 1: 10.0.60.196
+Port 1: 20001
+Self Evolving: False
+Update Strategy: 1
+Sequence Length: 1000
+
+# Encoders (identity)
+Encoder: identity
+
+# Algorithms (random_forest/naive_bayes/svm/feedforward/lstm/logistic_regression/decision_tree)
+Attack Detection: feedforward
+Infection Detection: feedforward
+Reconnaissance Detection: feedforward
+
+# Packet Feature Extractors (True/False)
+
+# Flow Feature Extractors (True/False)
+flow_psh: True
+fpkts_per_second: True
+total_bhlen: True
+flow_iat_max: True
+backward_packet_length_max: True
+forward_iat_std: True
+total_length_of_forward_packets: True
+backward_packet_length_std: True
+forward_iat_min: True
+total_fhlen: True
+total_length_of_backward_packets: True
+total_backward_packets: True
+forward_iat_max: True
+forward_packet_length_mean: True
+backward_iat_min: True
+flow_iat_min: True
+backward_packet_length_min: True
+flow_syn: True
+bpkts_per_second: True
+flow_protocol: True
+forward_iat_total: True
+forward_packet_length_min: True
+backward_iat_max: True
+flow_iat_total: True
+flow_urg: True
+flow_fin: True
+flow_ece: True
+forward_packet_length_std: True
+backward_packet_length_mean: True
+flow_iat_std: True
+flow_ack: True
+backward_iat_total: True
+backward_iat_mean: True
+flow_rst: True
+total_forward_packets: True
+flow_packets_per_second: True
+backward_iat_std: True
+flow_cwr: True
+forward_iat_mean: True
+flow_iat_mean: True
+forward_packet_length_max: True
