@@ -334,7 +334,6 @@ class ModelManager:
             self.is_model_generated = True
             logging.info("After generating the model based on the training set")
 
-
     async def detection(self, window):
         if window:
             self.test_packets += window.get_num_of_packets("both")
@@ -717,27 +716,6 @@ class ModelManager:
                 print ("  - reconnaissance Start Time: {}".format(self.reconnaissance_start_time))
                 print ("  - First Detection Time: {}".format(self.first_detection_time["reconnaissance"][rname]))
             print ("")
-
-        if self.core.is_self_evolving():
-            idx = 0
-            print ("4. Infection (After)")
-            for iname in self.inames:
-                idx += 1
-                print ("{}) {}".format(idx, iname))
-                print ("  - Accuracy: {}".format(self.accuracy["evolution"][iname]))
-                print ("  - Precision: {}".format(self.precision["evolution"][iname]))
-                print ("  - Recall: {}".format(self.recall["evolution"][iname]))
-                print ("  - F1: {}".format(self.f1["evolution"][iname]))
-                print ("  - ROC AUC: {}".format(self.auc["evolution"][iname]))
-                print ("  - # of Test Samples: {}".format(len(self.test_labels["evolution"])))
-                print ("  - # of Test Packets: {}".format(self.retest_packets))
-                print ("    # of benign windows: {}".format(self.num_of_ebenign_windows))
-                print ("    # of infection windows: {}".format(self.num_of_einfection_windows))
-                print ("  - True Positive: {}".format(self.true_positive["evolution"][iname]))
-                print ("  - True Negative: {}".format(self.true_negative["evolution"][iname]))
-                print ("  - False Positive: {}".format(self.false_positive["evolution"][iname]))
-                print ("  - False Negative: {}".format(self.false_negative["evolution"][iname]))
-                print ("")
 
 async def model(mm):
     logging.info("Run Model Manager")
