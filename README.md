@@ -1,10 +1,9 @@
-# IoTEDef Testbed
+# IDS Framework
 
-This repository includes the source code of the IoTEDef system.
+This repository includes the source code of the IDS framework.
 
 ## Directories
 * algorithms: the source codes of the classifiers
-* analyzers: the source codes of the identification algorithm
 * definitions: the source codes of the abstract model definitions
 * encoders: the source codes of encoders
 * features: 40 features are included
@@ -44,7 +43,6 @@ This repository includes the source code of the IoTEDef system.
 
 ## How to Add Algorithms
  * You can add a new detector algorithm to the algorithms directory by python3 add_algorithm.py --name \<name of a new algorithm\> (e.g., `python3 add_algorithm.py --name decision_tree`)
- * You can add a new infection identifier algorithm to the analyzers directory by python3 add_analyzer.py --name \<name of a new algorithm\> (e.g., `python3 add_analyzer.py --name attention`)
  * You can add a new encoding algorithm to the encoders directory by python3 add_encoder.py --name \<name of a new encoder\> (e.g., `python3 add_encoder.py --name identity`)
  * You can add a new feature to the features directory by python3 add_feature.py --type \<flow/packet\> --name \<name of a new feature\> (e.g., `python3 add_feature.py --type flow --name iat`)
  * Please update a new setting by `python3 prepare_ids.py` when you add something
@@ -85,9 +83,6 @@ This repository includes the source code of the IoTEDef system.
  * Attack Detection: the classifier algorithm for the attack: string
  * Infection Detection: the classifier algorithm for the infection: string
  * Reconnaissance Detection: the classifier algorithm for the reconnaissance: string
-
-### Infection Identifier
- * Analyzer: the infection identification algorithm: string
 
 ### Flow Features
  * forward_iat_std: the standard deviation of the inter-arrival time in the forward direction: True/False
