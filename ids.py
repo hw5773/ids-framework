@@ -60,8 +60,10 @@ class IDSCore:
 
         if serial:
             self.output = "ids_{}_{}.csv".format(ofname, serial)
+            self.dataset = "ids_{}_{}_dataset.csv".format(ofname, serial)
         else:
             self.output = "{}.csv".format(ofname)
+            self.dataset = "{}-dataset.csv".format(ofname)
         self.conf = conf
         self.sidx = sidx
         self.eidx = evolve
@@ -357,7 +359,7 @@ class IDSCore:
                 time.sleep(1)
                 pass
         self.model_manager.print_result()
-        self.write_result(self.output)
+        self.write_result(self.output, self.dataset)
 
 
         logging.info("Quitting the experiment")
@@ -366,9 +368,25 @@ class IDSCore:
     def is_self_evolving(self):
         return self.evolve
 
-    def write_result(self, ofname):
+    def write_result(self, ofname, dfname):
         training_set = self.model_manager.get_training_set()
         num_of_training_samples = len(training_set.get_dataset())
+
+        windows = training_set.get_windows()
+        features = windows[0].get_feature_names()
+        with open(dfname, "w") as df:
+            df.write(features[0])
+            for idx in range(1, len(features)):
+                df.write(",{}".format(features[idx]))
+            df.write("\n")
+
+            for window in windows:
+                value = str(window.get_feature_value(features[0]))
+                df.write(value)
+                for idx in range(1, len(features)):
+                    value = str(window.get_feature_value(features[idx]))
+                    df.write(",{}".format(value))
+                df.write("\n")
 
         with open(ofname, "w") as of:
             of.write("type, algorithm, accuracy, precision, recall, f1, true positive, true negative, false positive, false negative, learning time, first detection time, # of training samples, # of anomalous training samples, # of test samples, # of benign test samples, # of anomalous test samples\n")
@@ -469,6 +487,7 @@ class IDSCore:
                     s = "evolution, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}\n".format(iname, accuracy, precision, recall, f1, tp, tn, fp, fn, lt, fstr, num_of_training_samples, num_of_infection_training_samples, num_of_test_samples, num_of_benign_test_samples, num_of_infection_test_samples)
                     logging.debug("{}: {}".format(ofname, s))
                     of.write(s)
+        
 
     def get_tcpreplay_start_for_training(self):
         return self.tcpreplay_start_for_training

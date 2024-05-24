@@ -26,7 +26,6 @@ class FeatureExtractor:
     def add_window(self, window):
         with self.queue_lock:
             window.set_serial_number(self.cnt)
-#            print("Feature Extractor 1> {}) {}: Window Start Time: {} / Window End Time: {} / Packets in Window (Forward): {} / Packets in Window (Backward): {}".format(window.get_serial_number(), window.get_flow_info("forward"), window.get_window_start_time(), window.get_window_end_time(), window.get_num_of_packets("forward"), window.get_num_of_packets("backward")))
             self.queue.append(window)
             self.cnt += 1
 
@@ -55,8 +54,6 @@ class FeatureExtractor:
                 break
 
             window = self.queue.pop(0)
-            #print ("Feature Extractor 2> {}) {}: Window Start Time: {} / Window End Time: {} / Packets in Window (Forward): {} / Packets in Window (Backward): {}".format(window.get_serial_number(), window.get_flow_info("forward"), window.get_window_start_time(), window.get_window_end_time(), window.get_num_of_packets("forward"), window.get_num_of_packets("backward")))
-            #print ("Feature Extractor 2> {}) {}".format(window.get_serial_number(), window))
 
             self.extract_feature(window)
 
