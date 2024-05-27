@@ -798,13 +798,6 @@ def parse_config(ids, conf):
     logging.debug("ModelManager is initialized with the infection detection algorithm: {}".format(inames))
     logging.debug("ModelManager is initialized with the reconnaissance detection algorithm: {}".format(rnames))
 
-    if len(cnames) <= 0:
-        logging.error("No causal analyzer is set")
-        sys.exit(1)
-
-    ids.sequence_manager = SequenceManager(ids, home, ofprefix, rv, ipaddr, port, max_len, width, granularity, cnames)
-    logging.debug("SequenceManager is initialized")
-
 def parse_label(fname):
     ret = {}
     ret["none"] = {}
