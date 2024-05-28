@@ -355,9 +355,6 @@ class IDSCore:
             self.is_retesting = False
 
         else:
-            while not self.sequence_manager.get_is_sent():
-                time.sleep(1)
-                pass
         self.model_manager.print_result()
         self.write_result(self.output, self.dataset)
 
