@@ -330,7 +330,6 @@ class ModelManager:
                 if wnum % 100 == 0:
                     logging.info("Progress: {}/{}".format(wnum, len(windows)))
             logging.info("Progress: {}/{}".format(wnum, len(windows)))
-            self.core.send_training_set_to_sequence_manager(self.training_set)
             self.is_model_generated = True
             logging.info("After generating the model based on the training set")
 
@@ -418,8 +417,6 @@ class ModelManager:
             wnd.set_probability_complete()
             if wnd.get_labeled("infection") == 1:
                 self.infection_labeled_windows.append(wnd)
-
-            self.core.send_window_to_sequence_manager(wnd)
 
         if self.core.get_is_test_set_processed():
             for aname in self.anames:
