@@ -354,7 +354,6 @@ class IDSCore:
                 pass
             self.is_retesting = False
 
-        else:
         self.model_manager.print_result()
         self.write_result(self.output, self.dataset)
 
