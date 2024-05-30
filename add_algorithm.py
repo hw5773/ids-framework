@@ -15,9 +15,9 @@ def generate_template(name):
         f.write("        super().__init__(name)\n\n")
         f.write("    # Please implement the following functions\n")
         f.write("    # Concerning dataset, refer to the class TrainingSet\n")
-        f.write("    def learning(self, windows):\n")
+        f.write("    def learning(self, windows, kind):\n")
         f.write("        pass\n\n")
-        f.write("    def detection(self, window):\n")
+        f.write("    def detection(self, window, kind):\n")
         f.write("        pass\n")
 
 def command_line_args():

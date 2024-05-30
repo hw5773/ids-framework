@@ -14,14 +14,18 @@ class FlowIatMin(Feature):
         pkts = window.get_packets("backward") + window.get_packets("forward")
         pkts = sorted(pkts, key=lambda pkt: pkt.get_timestamp())
         val = 99999
-        for i in range(len(pkts)):
-            if i == 0:
-                prep = pkts[i].get_timestamp()
-            else:
-                curr = pkts[i].get_timestamp()
-                iat = curr - prep
-                if iat < val:
-                    val = iat
+
+        if len(pkts) == 0:
+            val = -1
+        else:
+            for i in range(len(pkts)):
+                if i == 0:
+                    prep = pkts[i].get_timestamp()
+                else:
+                    curr = pkts[i].get_timestamp()
+                    iat = curr - prep
+                    if iat < val:
+                        val = iat
 
         window.add_feature_value(self.get_name(), val)
         logging.debug('{}: {}'.format(self.get_name(), val))

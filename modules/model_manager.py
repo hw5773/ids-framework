@@ -269,7 +269,6 @@ class ModelManager:
         if window:
             self.training_packets += window.get_num_of_packets("both")
             logging.debug("Receive one Window in the learning phase: {}".format(window.get_code()))
-            #logging.info("Model Manager (in)> {}) {}: Window Start Time: {} / Window End Time: {} / Packets in Window (Forward): {} / Packets in Window (Backward): {}".format(window.get_serial_number(), window.get_flow_info("forward"), window.get_window_start_time(), window.get_window_end_time(), window.get_num_of_packets("forward"), window.get_num_of_packets("backward")))
             logging.debug("model_manager> Window's label in ModelManager (Attack Label: {}, Infection Label: {}, Reconnaissance: {})".format(window.get_label("attack"), window.get_label("infection"), window.get_label("reconnaissance")))
 
             if window.get_serial_number() != self.cnt:
