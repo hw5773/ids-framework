@@ -374,6 +374,7 @@ class IDSCore:
             df.write(features[0])
             for idx in range(1, len(features)):
                 df.write(",{}".format(features[idx]))
+            df.write(",reconnaissance,infection,action")
             df.write("\n")
 
             for window in windows:
@@ -382,6 +383,7 @@ class IDSCore:
                 for idx in range(1, len(features)):
                     value = str(window.get_feature_value(features[idx]))
                     df.write(",{}".format(value))
+                df.write(",{},{},{}".format(window.get_label("reconnaissance"), window.get_label("infection"), window.get_label("attack")))
                 df.write("\n")
 
         with open(ofname, "w") as of:
