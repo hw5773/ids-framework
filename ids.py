@@ -354,10 +354,6 @@ class IDSCore:
                 pass
             self.is_retesting = False
 
-        else:
-            while not self.sequence_manager.get_is_sent():
-                time.sleep(1)
-                pass
         self.model_manager.print_result()
         self.write_result(self.output, self.dataset)
 
@@ -797,13 +793,6 @@ def parse_config(ids, conf):
     logging.debug("ModelManager is initialized with the attack detection algorithm: {}".format(anames))
     logging.debug("ModelManager is initialized with the infection detection algorithm: {}".format(inames))
     logging.debug("ModelManager is initialized with the reconnaissance detection algorithm: {}".format(rnames))
-
-    if len(cnames) <= 0:
-        logging.error("No causal analyzer is set")
-        sys.exit(1)
-
-    ids.sequence_manager = SequenceManager(ids, home, ofprefix, rv, ipaddr, port, max_len, width, granularity, cnames)
-    logging.debug("SequenceManager is initialized")
 
 def parse_label(fname):
     ret = {}
